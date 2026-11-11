@@ -34,6 +34,8 @@ namespace dGomezS5.Repositories
                     throw new Exception("El nombre es requerido");
                 Persona persona = new() { Name = name};
                 result = _conn.Insert(persona);
+                Message = "Persona agregada correctamente";
+
             }
             catch (Exception ex)
             {
@@ -63,6 +65,32 @@ namespace dGomezS5.Repositories
                 Init();
                 _conn.Delete<Persona>(id);
                 Message = "Persona eliminada correctamente";
+            }
+            catch (Exception ex)
+            {
+                Message = "ERROR: " + ex.Message;
+            }
+        }
+
+        public void UpdatePerson(int id, string name)
+        {
+            try
+            {
+                Init();
+
+                if (string.IsNullOrEmpty(name))
+                    throw new Exception("El nombre es requerido");
+
+                Persona persona = _conn.Find<Persona>(id);
+
+                if (persona == null)
+                    throw new Exception("Persona no encontrada");
+
+                persona.Name = name;
+
+                _conn.Update(persona);
+
+                Message = "Persona actualizada correctamente";
             }
             catch (Exception ex)
             {

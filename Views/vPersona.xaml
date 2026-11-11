@@ -22,6 +22,7 @@
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
@@ -33,7 +34,7 @@
                 Grid.Row="0"
                 Grid.Column="0"></Button>
             <Label x:Name="lblMessage"
-                   TextColor="Red"
+                   TextColor="Green"
                    Grid.Row="1"
                    Grid.Column="0"></Label>
             <Button
@@ -72,6 +73,13 @@
                 Text="Eliminar Persona"
                 Clicked="btnEliminar_Clicked"
                 Grid.Row="4"
+                Grid.Column="0">
+            </Button>
+            <Button
+                x:Name="btnEditar"
+                Text="Editar Persona"
+                Clicked="btnEditar_Clicked"
+                Grid.Row="5"
                 Grid.Column="0">
             </Button>
         </Grid>

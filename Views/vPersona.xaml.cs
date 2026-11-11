@@ -14,6 +14,7 @@ public partial class vPersona : ContentPage
         lblMessage.Text = " ";
         App._personrepo.AddNewPerson(txtNombre.Text);
         lblMessage.Text = App._personrepo.Message;
+        txtNombre.Text = "";
     }
 
     private void btnMostrar_Clicked(object sender, EventArgs e)
@@ -37,7 +38,30 @@ public partial class vPersona : ContentPage
         }
         else
         {
+
             await DisplayAlert("Error", "Ingrese un ID válido", "OK");
         }
+    }
+
+    private async void btnEditar_Clicked(object sender, EventArgs e)
+    {
+        string id = await DisplayPromptAsync("Editar", "Ingrese el ID de la persona:");
+
+        if (!int.TryParse(id, out int idPersona))
+        {
+            await DisplayAlertAsync("Error", "Ingrese un ID válido", "OK");
+            return;
+        }
+
+        string nombre = await DisplayPromptAsync("Editar", "Ingrese el nuevo nombre:");
+
+        if (nombre == null)
+            return;
+
+        App._personrepo.UpdatePerson(idPersona, nombre);
+
+        lblMessage.Text = App._personrepo.Message;
+
+        ListaPersonas.ItemsSource = App._personrepo.GetAllPerson();
     }
 }
