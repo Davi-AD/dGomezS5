@@ -70,14 +70,14 @@
             </CollectionView>
             <Button
                 x:Name="btnEliminar"
-                Text="Eliminar Persona"
+                Text="Eliminar Persona "
                 Clicked="btnEliminar_Clicked"
                 Grid.Row="4"
                 Grid.Column="0">
             </Button>
             <Button
                 x:Name="btnEditar"
-                Text="Editar Persona"
+                Text="Editar Persona "
                 Clicked="btnEditar_Clicked"
                 Grid.Row="5"
                 Grid.Column="0">
